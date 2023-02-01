@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example for response examples value",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/employees": {
+            "post": {
+                "summary": "Membuat data `employees`.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "salary": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Jessica Smith",
+                                    "salary": 5000000
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true
+                                        }
+                                    },
+                                    "bool": {
+                                        "summary": "A boolean value.",
+                                        "value": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtimes": {
+            "post": {
+                "summary": "Membuat data `overtimes`.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "employee_id": {
+                                        "type": "integer"
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "time_started": {
+                                        "type": "time"
+                                    },
+                                    "time_ended": {
+                                        "type": "time"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "1",
+                                    "date": "10-11-2021",
+                                    "time_started": "19:00",
+                                    "time_ended": "22:00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true
+                                        }
+                                    },
+                                    "bool": {
+                                        "summary": "A boolean value.",
+                                        "value": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtime-pays/calculate": {
+            "get": {
+                "description": "Menampilkan hasil perhitungan dari `overtimes` yang ada pada setiap `employees`, berdasarkan bulan yang ditentukan, tanpa format pagination.",
+                "parameters": [
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "Parameter bulan yang dicari",
+                        "schema": {
+                            "type": "date"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "success": true
+                                        }
+                                    },
+                                    "bool": {
+                                        "summary": "A boolean value.",
+                                        "value": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/settings": {
+            "patch": {
+                "summary": "Mengubah data `settings`.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "key": "overtime_method",
+                                    "value": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}
